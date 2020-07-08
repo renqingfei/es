@@ -1,0 +1,29 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-nodes: 192.168.216.11:9300
+      #cluster-name: es
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://116.62.13.78:3306/dangdang?useSSL=false&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+server:
+  port: 8988
+  servlet:
+    context-path: /es
+    jsp:
+      init-parameters:
+        development: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+
+mybatis:
+  mapper-locations: classpath:com.mapping/*Mapper.xml
+  type-aliases-package: com.example.demo_es.entity

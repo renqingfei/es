@@ -8,6 +8,7 @@ spring:
     url: jdbc:mysql://116.62.13.78:3306/dangdang?useSSL=false&useUnicode=true&characterEncoding=utf-8
     username: root
     password: root
+
 server:
   port: 8988
   servlet:
@@ -23,7 +24,10 @@ server:
     view:
       prefix: /
       suffix: .jsp
-
+logging:
+  level:com.example.demo_es.dao: debug
 mybatis:
   mapper-locations: classpath:com.mapping/*Mapper.xml
   type-aliases-package: com.example.demo_es.entity
+
+

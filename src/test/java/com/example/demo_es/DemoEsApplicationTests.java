@@ -58,7 +58,7 @@ public class DemoEsApplicationTests {
     }
     @Test
     public void getone(){
-        Optional<Address> byId = redao.findById(0);
+        Optional<Address> byId = redao.findById(4);
         Address address = byId.get();
         System.out.println(address);
     }
@@ -78,45 +78,45 @@ public class DemoEsApplicationTests {
     }
     @Test
     public void selectname(){
-        Address byName = redao.findByName("111");
+        Address byName = redao.findByName("我是宝宝");
         System.out.println(byName);
     }
     @Test
     public void nameandphone(){
-        Address byNameAndPhone = redao.findByNameAndPhone("111", "123456132");
+        Address byNameAndPhone = redao.findByNameAndPhone("我是宝宝", "123456654");
         System.out.println(byNameAndPhone);
     }
     @Test
     public void like(){
-        List<Address> byNameLike = redao.findByNameLike("1");
+        List<Address> byNameLike = redao.findByNameLike("宝");
         for (Address address : byNameLike) {
             System.out.println(address);
         }
     }
     @Test
     public void nameorphone(){
-        List<Address> byNameOrPhone = redao.findByNameOrPhone("111", "123456789");
+        List<Address> byNameOrPhone = redao.findByNameOrPhone("我是宝宝", "123456654");
         for (Address address : byNameOrPhone) {
             System.out.println(address);
         }
     }
     @Test
     public void IdBetween(){
-        List<Address> byIdBetween = redao.findByIdBetween(0, 3);
+        List<Address> byIdBetween = redao.findByIdBetween(1, 3);
         for (Address address : byIdBetween) {
             System.out.println(address);
         }
     }
     @Test
     public void namenot(){
-        List<Address> byNameNot = redao.findByNameNot("111");
+        List<Address> byNameNot = redao.findByNameNot("我是宝宝");
         for (Address address : byNameNot) {
             System.out.println(address);
         }
     }
     @Test
     public void end(){
-        List<Address> byNameEndingWith = redao.findByNameEndingWith("中");
+        List<Address> byNameEndingWith = redao.findByNameEndingWith("天");
         for (Address address : byNameEndingWith) {
             System.out.println(address);
         }

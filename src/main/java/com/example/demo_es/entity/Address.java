@@ -8,12 +8,13 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
+import java.io.Serializable;
 import java.util.Objects;
 @Document(indexName = "dangdang",type = "address")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Address {
+public class Address implements Serializable {
 	@Id
 	@Field(type = FieldType.Integer)
 	private int id;

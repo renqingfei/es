@@ -5,6 +5,7 @@ import com.example.demo_es.service.AddressService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +24,10 @@ public class AddressController {
         int insert = service.insert(address);
         return insert;
     }
+
     @GetMapping("/selectAll")
     @ApiOperation(value = "查询所有",notes = "查询所有")
+    @Cacheable(cacheNames = "address",key = "'address'")
     public List<Address> selectAll(){
         List<Address> addresses = service.selectAll();
         return addresses;
@@ -42,5 +45,7 @@ public class AddressController {
         List<Address> addresses = service.search(name);
         return addresses;
     }
+
+
 }
 

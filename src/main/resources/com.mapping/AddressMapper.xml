@@ -33,61 +33,47 @@
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">delete from houseswhere id = #{id,jdbcType=INTEGER} </delete>-->
 
-    <insert id="insert" parameterType="com.example.demo_es.entity.Address">insert into address (id, name, local,phone, zip_code,user_id)values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{local,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR}, #{zip_code,jdbcType=VARCHAR}, #{user_id,jdbcType=VARCHAR}) </insert>
-
-
+    <insert id="insert" parameterType="com.example.demo_es.entity.Address" useGeneratedKeys="true" keyProperty="id">insert into address (id, name, local,phone, zip_code,user_id)values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{local,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR}, #{zip_code,jdbcType=VARCHAR}, #{user_id,jdbcType=VARCHAR}) </insert>
    <!-- -<insert id="insertSelective" parameterType="com.example.demo_houses.entity.Houses">
     insert into houses
-
     -<trim suffixOverrides="," suffix=")" prefix="(">
-
     <if test="id != null">id, </if>
-
     <if test="address != null">address, </if>
-
     <if test="code != null">code, </if>
-
     <if test="floor != null">floor, </if>
-
     <if test="area != null">area, </if>
-
 </trim>
-
-
     -<trim suffixOverrides="," suffix=")" prefix="values (">
-
     <if test="id != null">#{id,jdbcType=INTEGER}, </if>
-
     <if test="address != null">#{address,jdbcType=VARCHAR}, </if>
-
     <if test="code != null">#{code,jdbcType=VARCHAR}, </if>
-
     <if test="floor != null">#{floor,jdbcType=VARCHAR}, </if>
-
     <if test="area != null">#{area,jdbcType=VARCHAR}, </if>
-
 </trim>
-
 </insert>
+-->
 
+    <update id="updateAddress" parameterType="com.example.demo_es.entity.Address">
+    update address
 
-    -<update id="updateByPrimaryKeySelective" parameterType="com.example.demo_houses.entity.Houses">
-    update houses
+    <set>
 
-    -<set>
+    <if test="name != null">name = #{name,jdbcType=VARCHAR}, </if>
 
-    <if test="address != null">address = #{address,jdbcType=VARCHAR}, </if>
+    <if test="local != null">local = #{local,jdbcType=VARCHAR}, </if>
 
-    <if test="code != null">code = #{code,jdbcType=VARCHAR}, </if>
+    <if test="phone != null">phone = #{phone,jdbcType=VARCHAR}, </if>
 
-    <if test="floor != null">floor = #{floor,jdbcType=VARCHAR}, </if>
+    <if test="zip_code != null">zip_code = #{zip_code,jdbcType=VARCHAR}, </if>
+    <if test="user_id != null">zip_code = #{user_id,jdbcType=VARCHAR}, </if>
 
-    <if test="area != null">area = #{area,jdbcType=VARCHAR}, </if>
-
-</set>
+    </set>
     where id = #{id,jdbcType=INTEGER}
 </update>
-
+    <delete id="deleteAddress" parameterType="java.lang.Integer">
+        delete from address where id=#{id}
+    </delete>
+<!--
     <update id="updateByPrimaryKey" parameterType="com.example.demo_houses.entity.Houses">update housesset address = #{address,jdbcType=VARCHAR},code = #{code,jdbcType=VARCHAR},floor = #{floor,jdbcType=VARCHAR},area = #{area,jdbcType=VARCHAR}where id = #{id,jdbcType=INTEGER} </update>
 -->
 </mapper>

@@ -5,6 +5,8 @@ import com.example.demo_es.service.AddressService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +22,14 @@ public class AddressController {
     private AddressService service;
     @GetMapping("/insert")
     @ApiOperation(value = "添加地址",notes = "添加地址")
+    @CacheEvict(cacheNames = "address",key = "'address'")
     public int insert(Address address){
         int insert = service.insert(address);
         return insert;
     }
 
     @GetMapping("/selectAll")
-    @ApiOperation(value = "查询所有",notes = "查询所有")
+    @ApiOperation(value = "查询所有添加缓存",notes = "查询所有添加缓存")
     @Cacheable(cacheNames = "address",key = "'address'")
     public List<Address> selectAll(){
         List<Address> addresses = service.selectAll();
@@ -45,7 +48,19 @@ public class AddressController {
         List<Address> addresses = service.search(name);
         return addresses;
     }
-
-
+    @GetMapping("/update")
+    @ApiOperation(value = "修改地址",notes = "修改地址")
+    @CacheEvict(cacheNames = "address",key = "'address'")
+    public int update(Address address){
+        int i = service.updateAddress(address);
+        return i;
+    }
+    @GetMapping("/delete")
+    @ApiOperation(value = "删除地址",notes = "删除地址")
+    @CacheEvict(cacheNames = "address",key = "'address'")
+    public int delete(int id){
+        int i = service.deleteAddress(id);
+        return i;
+    }
 }
 

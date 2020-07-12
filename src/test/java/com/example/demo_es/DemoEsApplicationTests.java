@@ -42,6 +42,7 @@ public class DemoEsApplicationTests {
     }
     @Test
     public void delete(){
+
         redao.deleteById(0);
     }
     @Test

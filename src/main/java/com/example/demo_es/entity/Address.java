@@ -22,9 +22,9 @@ public class Address implements Serializable {
 	private String name;
 	@Field(type = FieldType.Text,analyzer ="ik_max_word")
 	private String local;
-	@Field(type = FieldType.Keyword)
+	@Field(type = FieldType.Text)
 	private String phone;
-	@Field(type = FieldType.Keyword)
+	@Field(type = FieldType.Text)
 	private String zip_code;
 	@Field(type = FieldType.Keyword)
 	private String user_id;

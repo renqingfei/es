@@ -41,7 +41,12 @@ public class AddressController {
         boolean b = service.selectAlles();
         return b;
     }
-
+    @GetMapping("/findByNameOrPhoneOrLocalOrZip_code")
+    @ApiOperation(value = "多条件查询",notes = "多条件查询")
+    public List<Address> findByNameOrPhoneOrLocalOrZip_code(String name,String phone,String local,String zip_code){
+        List<Address> byNameOrPhoneOrLocalOrZip_code = service.findByNameOrPhoneOrLocalOrZip_code(name, phone, local, zip_code);
+        return byNameOrPhoneOrLocalOrZip_code;
+    }
     @GetMapping("/search")
     @ApiOperation(value = "模糊查询",notes = "模糊查询")
     public List<Address> search(String name){

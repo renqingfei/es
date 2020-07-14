@@ -89,7 +89,7 @@ public class DemoEsApplicationTests {
     }
     @Test
     public void like(){
-        List<Address> byNameLike = redao.findByNameLike("宝");
+        List<Address> byNameLike = redao.findByNameLike("c");
         for (Address address : byNameLike) {
             System.out.println(address);
         }

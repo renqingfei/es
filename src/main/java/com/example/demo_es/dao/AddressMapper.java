@@ -11,4 +11,5 @@ public interface AddressMapper {
     public List<Address> selectAll();
     public int updateAddress(Address address);
     public int deleteAddress(int id);
+
 }

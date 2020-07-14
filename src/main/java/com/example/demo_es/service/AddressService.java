@@ -3,6 +3,7 @@ package com.example.demo_es.service;
 import com.example.demo_es.dao.AddressMapper;
 import com.example.demo_es.repository.AddressRepository;
 import com.example.demo_es.entity.Address;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ public class AddressService {
   @Autowired
     private AddressRepository addressdao;
 
-  //hshjs
+
   @Autowired
   private AddressMapper mapper;
     public int insert(Address address){
@@ -42,6 +43,12 @@ public class AddressService {
         List<Address> byNameLike = addressdao.findByNameLike(name);
         return byNameLike;
     }
+    public List<Address> findByNameOrPhoneOrLocalOrZip_code(String name,String phone,String local,String zip_code){
+        List<Address> byNameOrPhoneOrLocalOrZip_code = addressdao.findByNameOrPhoneOrLocalOrZip_code(name, phone, local, zip_code);
+        return byNameOrPhoneOrLocalOrZip_code;
+    }
+
+
 
     public int updateAddress(Address address){
         int i = mapper.updateAddress(address);

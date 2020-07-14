@@ -15,7 +15,7 @@
     <result jdbcType="VARCHAR" property="phone" column="phone"/>
 
     <result jdbcType="VARCHAR" property="zip_code" column="zip_code"/>
-        <result jdbcType="VARCHAR" property="user_id" column="user_id"/>
+    <result jdbcType="VARCHAR" property="user_id" column="user_id"/>
 </resultMap>
 
     <sql id="Base_Column_List">id, name, local, phone, zip_code, user_id</sql>
@@ -26,6 +26,7 @@
     <include refid="Base_Column_List"/>
     from address
 </select>
+
 <!--
     <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">select * from houseswhere address = #{address,jdbcType=INTEGER} </select>
 

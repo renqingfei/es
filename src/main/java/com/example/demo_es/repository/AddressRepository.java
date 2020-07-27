@@ -2,10 +2,11 @@ package com.example.demo_es.repository;
 
 import com.example.demo_es.entity.Address;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
+
 
 import java.util.List;
-@Repository
+@Component
 public interface AddressRepository extends ElasticsearchRepository<Address,Integer> {
      Address findByName(String name);
      Address findByNameAndPhone(String name,String phone);
@@ -14,7 +15,7 @@ public interface AddressRepository extends ElasticsearchRepository<Address,Integ
      List<Address> findByIdBetween(Integer min,Integer max);
      List<Address> findByNameNot(String name);
      List<Address> findByNameEndingWith(String name);
-     List<Address> findByNameOrPhoneOrLocalOrZip_code(String name,String phone,String local,String zip_code);
+
 
 
 }

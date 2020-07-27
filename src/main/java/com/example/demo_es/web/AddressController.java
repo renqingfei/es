@@ -1,5 +1,7 @@
 package com.example.demo_es.web;
 
+import com.example.demo_es.common.enums.ExceptionEnums;
+import com.example.demo_es.common.vo.Result;
 import com.example.demo_es.entity.Address;
 import com.example.demo_es.service.AddressService;
 import io.swagger.annotations.Api;
@@ -23,10 +25,11 @@ public class AddressController {
     @GetMapping("/insert")
     @ApiOperation(value = "添加地址",notes = "添加地址")
     @CacheEvict(cacheNames = "address",key = "'address'")
-    public int insert(Address address){
+    public Result insert(Address address){
         int insert = service.insert(address);
-        return insert;
+        return new Result(ExceptionEnums.ADD_ADDRESS_OK.getCode(),ExceptionEnums.ADD_ADDRESS_OK.getMsg(),insert);
     }
+
 
     @GetMapping("/selectAll")
     @ApiOperation(value = "查询所有添加缓存",notes = "查询所有添加缓存")

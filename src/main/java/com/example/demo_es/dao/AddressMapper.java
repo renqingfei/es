@@ -11,5 +11,6 @@ public interface AddressMapper {
     public List<Address> selectAll();
     public int updateAddress(Address address);
     public int deleteAddress(int id);
-
+    public List<Address> findByNameOrPhoneOrLocalOrZip_code(String name,String phone,String local,String zip_code);
+    Address selectName(String name);
 }

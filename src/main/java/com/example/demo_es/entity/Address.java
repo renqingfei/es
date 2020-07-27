@@ -16,7 +16,6 @@ import java.util.Objects;
 @Data
 public class Address implements Serializable {
 	@Id
-	@Field(type = FieldType.Integer)
 	private int id;
 	@Field(type = FieldType.Text,analyzer ="ik_max_word")
 	private String name;

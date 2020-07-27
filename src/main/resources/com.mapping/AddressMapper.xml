@@ -26,6 +26,30 @@
     <include refid="Base_Column_List"/>
     from address
 </select>
+    <select id="selectName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from address where name=#{name}
+    </select>
+    <select id="findByNameOrPhoneOrLocalOrZip_code" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from address
+        <where>
+        <if test="name != null">
+            and name=#{name,jdbcType=VARCHAR}
+        </if>
+        <if test="local != null">
+            and local=#{local,jdbcType=VARCHAR}
+        </if>
+        <if test="phone != null">
+            and phone=#{phone,jdbcType=VARCHAR}
+        </if>
+        <if test="zip_code != null">
+            and zip_code=#{zip_code,jdbcType=VARCHAR}
+        </if>
+        </where>
+    </select>
 
 <!--
     <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">select * from houseswhere address = #{address,jdbcType=INTEGER} </select>
